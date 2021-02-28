@@ -20,7 +20,7 @@ class Ships(pygame.sprite.Sprite):  # класс для космических �
         self.team = team # атрибут определения кманды корабля
         self.rect = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
-    def draw_ships(self): # общая функция отрисовки
+    def update(self): # общая функция отрисовки
         if self.team == "sh_l": # для левого корабля
             sc.blit(self.image, self.rect)
             if pygame.key.get_pressed()[K_LEFT]:
@@ -52,57 +52,59 @@ class Ships(pygame.sprite.Sprite):  # класс для космических �
                 raise SpaceShipOutOffScreen("корабль за пределами поля в вертикальной плоскости")
 
 
-class Bullet():  # класс пуль
-    def __init__(self, colour, radius, x, y, orient):
-            self.colour = colour
-            self.radius = radius
-            self.x = x
-            self.y = y
-            self.orient = orient  # аргумент направления
+class Bullet(pygame.sprite.Sprite):  # класс пуль
+    def __init__(self, x, y, orient):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((50,50))
+        self.image.fill(LIME)
+        self.x = x
+        self.y = y
+        self.orient = orient  # аргумент направления
+        self.rect = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
     def bul_gun(self): # направление движения пуль
         if self.orient == "r":  #для координат правого корабля
-            self.x += 5
+            self.rect.x += 5
         if self.orient == "l":   #для координат левого корабля
-            self.x -= 5
+            self.rect.x -= 5
 
     def draw_bul(self):
-        pygame.draw.circle(sc, self.colour, (self.x, self.y), self.radius)
+        sc.blit(self.image, self.rect)
 
 pygame.init()   # запуск игрового движка
 
 sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))  # создание игрового окна
 
 clock = pygame.time.Clock() # проверка заданой частоты
+all_sprites = pygame.sprite.Group()  # создание группы для спрайтов
 
 sh_l = Ships(WIN_WIDTH - 30, WIN_HEIGHT//2, 'C:\\Users\\kulpa\\Documents\\Pyton\\SpaceWar\\interprice.png', "sh_l")  # обьект левого корабля
 sh_r = Ships(0 + 30, WIN_HEIGHT//2, 'C:\\Users\\kulpa\\Documents\\Pyton\\SpaceWar\\titanik.png', "sh_r")  # обьект правого корабля
+all_sprites.add(sh_r, sh_l)  # добавление обьектов спрайтов в группу
 arr = [] #  массив  для пуль левого орабля
 
 while True: # запуск отрисовки
     sc.fill(BLACK)  # отрисовка окна
     clock.tick(FPS)  # частота обновления кадро
 
-    sh_l.draw_ships()  # отрисовка левого
-    sh_r.draw_ships()  # отрисовка пра
-
+    all_sprites.update()  # отрисовка группы спрайтов
 
     for i in pygame.event.get():  # запись действий за цикл
         if i.type == pygame.QUIT:  # если нажата кнопка выхода, выйти
             exit()
-        if i.type == pygame.KEYUP: # фиксация нажтия
-            if i.key == pygame.K_q: #  создание обькта пули правого корабля и загрузка его в массив
-                gun = Bullet(RED, 20, sh_r.rect.x, sh_r.rect.y, "r")
+        if i.type == pygame.KEYUP:  # фиксация нажтия
+            if i.key == pygame.K_q:  #  создание обькта пули правого корабля и загрузка его в массив
+                gun = Bullet(sh_r.rect.x, sh_r.rect.y, "r")
                 arr.append(gun)
 
             if i.key == pygame.K_BACKSPACE:  #  создание обькта пули левого корабля и загрузка его в массив
-                gun = Bullet(RED, 20, sh_l.rect.x, sh_l.rect.y, "l")
+                gun = Bullet(sh_l.rect.x, sh_l.rect.y, "l")
                 arr.append(gun)
 
-    for gun in arr:  #  отрисовка пуль правого корабля и удадение из масива обьктов за пределами экрана
+    for gun in arr:  #  отрисовка пуль корабля и удадение из масива обьктов за пределами экрана
         gun.draw_bul()
         gun.bul_gun()
-        if gun.x >= WIN_WIDTH + gun.radius or gun.x <= 0 - gun.radius:
+        if gun.x >= WIN_WIDTH + gun.rect.left or gun.x <= 0 - gun.rect.right:
             arr.remove(gun)
 
     pygame.display.update()   #  обновление экрана
