@@ -62,14 +62,16 @@ class Bullet(pygame.sprite.Sprite):  # класс пуль
         self.orient = orient  # аргумент направления
         self.rect = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
-    def bul_gun(self): # направление движения пуль
+    def update(self):
+        sc.blit(self.image, self.rect)
         if self.orient == "r":  #для координат правого корабля
             self.rect.x += 5
+            if self.rect.left > WIN_WIDTH:
+                self.kill()
         if self.orient == "l":   #для координат левого корабля
             self.rect.x -= 5
-
-    def draw_bul(self):
-        sc.blit(self.image, self.rect)
+            if self.rect.right < 0:
+                self.kill()
 
 pygame.init()   # запуск игрового движка
 
@@ -81,13 +83,14 @@ all_sprites = pygame.sprite.Group()  # создание группы для сп
 sh_l = Ships(WIN_WIDTH - 30, WIN_HEIGHT//2, 'C:\\Users\\kulpa\\Documents\\Pyton\\SpaceWar\\interprice.png', "sh_l")  # обьект левого корабля
 sh_r = Ships(0 + 30, WIN_HEIGHT//2, 'C:\\Users\\kulpa\\Documents\\Pyton\\SpaceWar\\titanik.png', "sh_r")  # обьект правого корабля
 all_sprites.add(sh_r, sh_l)  # добавление обьектов спрайтов в группу
-arr = [] #  массив  для пуль левого орабля
+bul_sprites = pygame.sprite.Group()
 
 while True: # запуск отрисовки
     sc.fill(BLACK)  # отрисовка окна
     clock.tick(FPS)  # частота обновления кадро
 
     all_sprites.update()  # отрисовка группы спрайтов
+    bul_sprites.update()
 
     for i in pygame.event.get():  # запись действий за цикл
         if i.type == pygame.QUIT:  # если нажата кнопка выхода, выйти
@@ -95,16 +98,10 @@ while True: # запуск отрисовки
         if i.type == pygame.KEYUP:  # фиксация нажтия
             if i.key == pygame.K_q:  #  создание обькта пули правого корабля и загрузка его в массив
                 gun = Bullet(sh_r.rect.x, sh_r.rect.y, "r")
-                arr.append(gun)
+                bul_sprites.add(gun)
 
             if i.key == pygame.K_BACKSPACE:  #  создание обькта пули левого корабля и загрузка его в массив
                 gun = Bullet(sh_l.rect.x, sh_l.rect.y, "l")
-                arr.append(gun)
-
-    for gun in arr:  #  отрисовка пуль корабля и удадение из масива обьктов за пределами экрана
-        gun.draw_bul()
-        gun.bul_gun()
-        if gun.x >= WIN_WIDTH + gun.rect.left or gun.x <= 0 - gun.rect.right:
-            arr.remove(gun)
+                bul_sprites.add(gun)
 
     pygame.display.update()   #  обновление экрана
