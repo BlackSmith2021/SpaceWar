@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Изменен класс пуль пуль, добавлена группа для спрайтов">
-      <change afterPath="$PROJECT_DIR$/ships_and_bullet.py" afterDir="false" />
+    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -133,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614513724765</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame">
+      <created>1614792704792</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614792704793</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -151,6 +157,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Обьединены классы космических кораблей" />
     <MESSAGE value="Изменен класс пуль пуль, добавлена группа для спрайтов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменен класс пуль пуль, добавлена группа для спрайтов" />
+    <MESSAGE value="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame" />
   </component>
 </project>
