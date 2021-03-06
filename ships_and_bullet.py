@@ -71,3 +71,15 @@ class Bullet(pygame.sprite.Sprite):  # класс пуль
             self.rect.x -= 5
             if self.rect.right < 0:
                 self.kill()
+
+class Stars():
+    def __init__(self, x, y, w, h, colour, sc):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.colour = colour
+        self.sc = sc
+
+    def draw(self):
+        pygame.draw.rect(self.sc, self.colour, (self.x, self.y, self.w, self.h))

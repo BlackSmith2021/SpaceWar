@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame&#10;добавлена проверка на столкновение спрайтов с последующим их удалением. Этофинальные изменения перед проверкой" />
+    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Создан файл для классов.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ships_and_bullet.py" beforeDir="false" afterPath="$PROJECT_DIR$/ships_and_bullet.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614940790533</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Создан файл для классов.">
+      <created>1615030649470</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615030649470</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +174,7 @@
     <MESSAGE value="Изменен класс пуль пуль, добавлена группа для спрайтов" />
     <MESSAGE value="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame" />
     <MESSAGE value="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame&#10;добавлена проверка на столкновение спрайтов с последующим их удалением. Этофинальные изменения перед проверкой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Изменен класс пуль пуль, добавлена группа для спрайтов, отрисовка пуль адаптирована под pygame&#10;добавлена проверка на столкновение спрайтов с последующим их удалением. Этофинальные изменения перед проверкой" />
+    <MESSAGE value="Создан файл для классов." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создан файл для классов." />
   </component>
 </project>
