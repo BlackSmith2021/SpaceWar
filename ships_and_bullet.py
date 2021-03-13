@@ -1,8 +1,8 @@
 import pygame
 from my_errors import SpaceShipOutOffScreen
 
-WIN_WIDTH = 1300
-WIN_HEIGHT = 800
+WIN_WIDTH = 1400
+WIN_HEIGHT = 850
 BLACK = (0, 0, 0)
 LIME = (180, 255, 100)
 ORANGE = (255, 100, 10)

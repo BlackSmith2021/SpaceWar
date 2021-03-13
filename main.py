@@ -7,6 +7,8 @@ FPS = 60
 pygame.init()   # запуск игрового движка
 
 sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))  # создание игрового окна
+background = pygame.image.load('C:\\Users\\kulpa\\Documents\\Pyton\\SpaceWar\\room.png')
+background_rect = background.get_rect()
 
 clock = pygame.time.Clock() # проверка заданой частоты
 all_sprites = pygame.sprite.Group()  # создание группы для спрайтов
@@ -20,6 +22,8 @@ arr_2 = []  # массив для пуль правого корабля
 
 while True:  # запуск отрисовки
     sc.fill(BLACK)  # отрисовка окна
+    sc.blit(background, background_rect)
+    all_sprites.draw(sc)
     clock.tick(FPS)  # частота обновления кадро
 
     all_sprites.update()  # отрисовка группы спрайтов
