@@ -8,18 +8,19 @@ LIME = (180, 255, 100)
 ORANGE = (255, 100, 10)
 RED = (255, 0, 0)
 
+
 class Ships(pygame.sprite.Sprite):  # класс для космических кораблей
     def __init__(self, x, y, file_name, team, sc):
         pygame.sprite.Sprite.__init__(self)
         self.x = x
         self.y = y
         self.image = pygame.image.load(file_name)
-        self.team = team # атрибут определения кманды корабля
+        self.team = team  # атрибут определения кманды корабля
         self.sc = sc
         self.rect = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
-    def update(self): # общая функция отрисовки
-        if self.team == "sh_l": # для левого корабля
+    def update(self):  # общая функция отрисовки
+        if self.team == "sh_l":  # для левого корабля
             self.sc.blit(self.image, self.rect)
             if pygame.key.get_pressed()[pygame.K_LEFT]:
                 self.rect.x -= 10
@@ -34,7 +35,7 @@ class Ships(pygame.sprite.Sprite):  # класс для космических �
             elif self.rect.y > WIN_HEIGHT + self.image.get_height() or self.rect.y < 0 - self.image.get_height():
                 raise SpaceShipOutOffScreen("корабль за пределами поля в вертикальной плоскости")
 
-        if self.team == "sh_r":   # для правого корабля
+        if self.team == "sh_r":  # для правого корабля
             self.sc.blit(self.image, self.rect)
             if pygame.key.get_pressed()[pygame.K_a]:
                 self.rect.x -= 10
@@ -67,7 +68,20 @@ class Bullet(pygame.sprite.Sprite):  # класс пуль
             self.rect.x += 5
             if self.rect.left > WIN_WIDTH:
                 self.kill()
-        if self.orient == "l":   # для координат левого корабля
+        if self.orient == "l":  # для координат левого корабля
             self.rect.x -= 5
             if self.rect.right < 0:
                 self.kill()
+
+
+class Van():
+    def __init__(self, sc, cor_x, cor_y, w_w, w_h):
+        self.sc = sc
+        self.cor_x = cor_x
+        self.cor_y = cor_y
+        self.w_w = w_w
+        self.w_h = w_h
+
+
+    def update(self):
+        pygame.draw.rect(self.sc, BLACK, rect=(self.cor_x, self.cor_y, self.w_w, self.w_h))
