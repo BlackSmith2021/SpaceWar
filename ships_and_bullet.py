@@ -1,5 +1,6 @@
 import pygame
 from my_errors import SpaceShipOutOffScreen
+import random
 
 WIN_WIDTH = 1400
 WIN_HEIGHT = 850
@@ -75,13 +76,19 @@ class Bullet(pygame.sprite.Sprite):  # класс пуль
 
 
 class Van():
-    def __init__(self, sc, cor_x, cor_y, w_w, w_h):
+    def __init__(self, sc, x, y, w, h):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.naprav = 1
         self.sc = sc
-        self.cor_x = cor_x
-        self.cor_y = cor_y
-        self.w_w = w_w
-        self.w_h = w_h
-
 
     def update(self):
-        pygame.draw.rect(self.sc, BLACK, rect=(self.cor_x, self.cor_y, self.w_w, self.w_h))
+        pygame.draw.rect(self.sc, LIME, (self.x - self.h // 2, self.y - self.w // 2, self.h, self.w))
+        pygame.draw.rect(self.sc, LIME, (self.x - self.w // 2, self.y - self.h // 2, self.w, self.h))
+        if self.h >= 100 or self.h <= 1:  # если переменная(длинна для одного, высота для другог) выходит за устанновленные рамки
+            self.naprav *= -1  # ее значение умножается на -1 и принимает отрицательное значение в случае если она больше условия
+            self.h += 2 * self.naprav  # положительное в случае если меньше
+        else:
+            self.h += 5 * self.naprav

@@ -1,4 +1,5 @@
 import pygame
+import random
 
 from ships_and_bullet import WIN_HEIGHT, WIN_WIDTH, Ships, Bullet, BLACK, Van
 
@@ -19,14 +20,7 @@ sh_r = Ships(0 + 30, WIN_HEIGHT // 2, 'C:\\Users\\kulpa\\Documents\\Pyton\\Space
              sc)  # обьект правого корабля
 all_sprites.add(sh_r, sh_l)  # добавление обьектов спрайтов в группу
 
-x = WIN_WIDTH // 2  # скрываем за левой границей
-y = WIN_HEIGHT // 2  # выравнивание по центру по вертикали
-w = 30
-h = 70
-naprav = 1
-
-van = Van(sc, 700, 700, 25, 50)
-
+arr_van = []
 arr = []  # массив для пуль левого корабля
 arr_2 = []  # массив для пуль правого корабля
 
@@ -52,14 +46,14 @@ while True:  # запуск отрисовки
                 all_sprites.add(gun_2)
                 arr.append(gun_2)
 
-    pygame.draw.rect(sc, BLACK, (x - h // 2, y - w // 2, h, w))
-    pygame.draw.rect(sc, BLACK, (x - w // 2, y - h // 2, w, h))
+    for i in range(3):  # создается три обьекта класса Van с рандомным местоположением и добавляются в массив
+        van = Van(sc, random.randint(1, 1600), random.randint(1, 1600), 5, 5)
+        arr_van.append(van)
 
-    if h >= 100 or h <= 1:  # если переменная(длинна для одного, высота для другог) выходит за устанновленные рамки
-        naprav *= -1  # ее значение умножается на -1 и принимает отрицательное значение в случае если она больше условия
-        h += 8 * naprav  # положительное в случае если меньше
-    else:
-        h += 5 * naprav
+    for i in arr_van:  # отрисовка массива обьькта из массива и удаление элемента по индексу 0
+        i.update()
+        if len(arr_van) > 200:
+            arr_van.pop(0)
 
     for gun_1 in arr:  # проверка столкновеня корабля с пулей и удаление корабля
         if sh_r.rect.colliderect(gun_1.rect):
