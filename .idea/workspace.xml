@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Добавлено много звезд.">
+    <list default="true" id="db914c98-0d4c-4caa-9ab7-a308111cf209" name="Default Changelist" comment="Beautifull">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620408097533</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Beautifull">
+      <created>1620723342624</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620723342624</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +226,7 @@
     <MESSAGE value="Добавлен фон" />
     <MESSAGE value="Добавлена анимацая в виде меняющего размеры креста с помощью двух обьектов rect. Центр отрисовки задан разностью координат x,y и делеленой нацело длинной, шириной. Переменная &quot;naprav&quot;  введена для задания направления изменения размера, она принимает отрицательное значение в случае, если размер превышает заданное значени, положительное значение переменная принмает в случае, если размер обьекта меньше заданного в услолвии" />
     <MESSAGE value="Добавлено много звезд." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлено много звезд." />
+    <MESSAGE value="Beautifull" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beautifull" />
   </component>
 </project>
